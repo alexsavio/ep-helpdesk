@@ -94,3 +94,21 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 EMAIL_HOST = os.environ.get("EMAIL_HOST") 
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER") 
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD") 
+
+### Helpdesk settings
+
+# Show KB ?
+HELPDESK_KB_ENABLED = False
+
+# Allow changing password ?
+HELPDESK_SHOW_CHANGE_PASSWORD = True
+
+# Helpdesk email subject
+HELPDESK_EMAIL_SUBJECT_TEMPLATE = "{{ ticket.title|safe }} %(subject)s {{ ticket.ticket }}"
+
+# Show tickets in public ?
+HELPDESK_VIEW_A_TICKET_PUBLIC = False
+
+# Hide assigned to in ticket submission form ?
+HELPDESK_CREATE_TICKET_HIDE_ASSIGNED_TO = True
+
