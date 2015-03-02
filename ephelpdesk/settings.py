@@ -91,9 +91,12 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
-EMAIL_HOST = os.environ.get("EMAIL_HOST") 
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER") 
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD") 
+#EMAIL_HOST = os.environ.get("EMAIL_HOST") 
+#EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER") 
+#EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD") 
+EMAIL_HOST = 'mail.europython.io'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
 ### Helpdesk settings
 
