@@ -107,7 +107,7 @@ HELPDESK_KB_ENABLED = False
 # XXX There's a but in the app which causes a:
 #     NoReverseMatch at /dashboard/ - Reverse for 'auth_password_change' errors
 #     when enabling this setting!
-#HELPDESK_SHOW_CHANGE_PASSWORD = True
+HELPDESK_SHOW_CHANGE_PASSWORD = False
 
 # Helpdesk email subject
 HELPDESK_EMAIL_SUBJECT_TEMPLATE = "{{ ticket.title|safe }} %(subject)s {{ ticket.ticket }}"
