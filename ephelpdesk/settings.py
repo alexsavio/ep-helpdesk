@@ -123,3 +123,5 @@ HELPDESK_VIEW_A_TICKET_PUBLIC = False
 # Hide assigned to in ticket submission form ?
 HELPDESK_CREATE_TICKET_HIDE_ASSIGNED_TO = True
 
+# Login URL
+LOGIN_URL = '/login/'
