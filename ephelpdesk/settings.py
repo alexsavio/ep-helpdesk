@@ -22,7 +22,7 @@ SECRET_KEY = os.environ.get("KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "").lower() in ("true", "1")
 # Force DEBUG to True, since the helpdesk doesn't run with DEBUG = False; see #2
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
