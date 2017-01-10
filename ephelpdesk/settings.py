@@ -24,9 +24,7 @@ DEBUG = os.environ.get("DEBUG", "").lower() in ("true", "1")
 # Force DEBUG to True, since the helpdesk doesn't run with DEBUG = False; see #2
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Site ID setting
 SITE_ID = 1
@@ -41,12 +39,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django.contrib.markup', #DEPRECATED
     'django.contrib.humanize',
-    #'south',
     'markdown_deux',
-    'helpdesk',
     'bootstrapform', 	
+    'helpdesk',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -73,6 +69,32 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'data/helpdesk.db'),
     }
 }
+
+TEMPLATES = [{
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'DIRS': [
+        os.path.join(BASE_DIR, 'helpdesk', 'templates'),
+    ],
+    'OPTIONS': {
+        'debug': DEBUG,
+        'context_processors': [
+            "django.contrib.auth.context_processors.auth",
+            'django.contrib.messages.context_processors.messages',
+            "django.core.context_processors.i18n",
+            "django.core.context_processors.debug",
+            "django.core.context_processors.request",
+            "django.core.context_processors.media",
+            'django.core.context_processors.csrf',
+            'django.core.context_processors.request',
+            "django.core.context_processors.tz",
+            "django.core.context_processors.static",
+        ],
+        'loaders': [
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader',
+        ],
+    },
+}]
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -107,10 +129,10 @@ EMAIL_HOST_PASSWORD = ''
 ### Helpdesk settings
 
 # Show KB ?
-HELPDESK_KB_ENABLED = False
+HELPDESK_KB_ENABLED = True
 
 # Allow changing password ?
-# XXX There's a but in the app which causes a:
+# XXX There's a bug in the app which causes a:
 #     NoReverseMatch at /dashboard/ - Reverse for 'auth_password_change' errors
 #     when enabling this setting!
 HELPDESK_SHOW_CHANGE_PASSWORD = False
@@ -121,8 +143,14 @@ HELPDESK_EMAIL_SUBJECT_TEMPLATE = "{{ ticket.title|safe }} %(subject)s {{ ticket
 # Show tickets in public ?
 HELPDESK_VIEW_A_TICKET_PUBLIC = False
 
+# Allow public submission of tickets ?
+HELPDESK_SUBMIT_A_TICKET_PUBLIC = False
+
 # Hide assigned to in ticket submission form ?
 HELPDESK_CREATE_TICKET_HIDE_ASSIGNED_TO = True
+
+# Enable per-queue permissions to e.g. hide old queues ?
+HELPDESK_ENABLE_PER_QUEUE_PERMISSION = True
 
 # Login URL
 LOGIN_URL = '/login/'
