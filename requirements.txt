@@ -5,3 +5,4 @@ django-markdown-deux
 simplejson
 six
 gunicorn==19.6.0
+pytz
